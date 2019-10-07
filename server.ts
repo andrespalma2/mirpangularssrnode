@@ -27,9 +27,13 @@ app.use(helmet());
 app.use(helmet.contentSecurityPolicy({
   directives:{
     defaultSrc:["'self'"],
-    
+
   }
+}));
+app.use(helmet.referrerPolicy({
+  policy: 'same-origin'
 }))
+
 app.use(express.json())
 
 const PORT = process.env.PORT || 80;
