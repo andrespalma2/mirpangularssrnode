@@ -10,7 +10,7 @@ module.exports = {
     server: './server.ts'
   },
   externals: {
-    './dist/server/main': 'require("./server/main")'
+    './dist/server/main': 'require("./dist/server/main")'
   },
   target: 'node',
   resolve: { extensions: ['.ts', '.js'] },
