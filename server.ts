@@ -24,15 +24,15 @@ import * as helmet from "helmet";
 // Express server
 const app = express();
 app.use(helmet());
-app.use(helmet.contentSecurityPolicy({
-  directives:{
-    defaultSrc:["'self'"],
+// app.use(helmet.contentSecurityPolicy({
+//   directives:{
+//     defaultSrc:["'self'"],
 
-  }
-}));
-app.use(helmet.referrerPolicy({
-  policy: 'same-origin'
-}))
+//   }
+// }));
+// app.use(helmet.referrerPolicy({
+//   policy: 'same-origin'
+// }))
 
 app.use(express.json())
 
