@@ -18,18 +18,19 @@
 import 'zone.js/dist/zone-node';
 
 import * as express from 'express';
-import {join} from 'path';
+import { join } from 'path';
 import * as helmet from "helmet";
 
 // Express server
 const app = express();
 app.use(helmet());
 app.use(helmet.contentSecurityPolicy({
-  directives:{
-    defaultSrc:["'self'"],
+  directives: {
+    defaultSrc: ["'self'"],
 
   }
 }));
+app.use(helmet.referrerPolicy({ policy: 'same-origin' }))
 // app.use(helmet.referrerPolicy({
 //   policy: 'same-origin'
 // }))
@@ -42,7 +43,7 @@ const PORT = process.env.PORT || 80;
 const DIST_FOLDER = join(process.cwd(), 'dist');
 
 // * NOTE :: leave this as require() since this file is built Dynamically from webpack
-const {AppServerModuleNgFactory, LAZY_MODULE_MAP, ngExpressEngine, provideModuleMap} = require('./dist/server/main');
+const { AppServerModuleNgFactory, LAZY_MODULE_MAP, ngExpressEngine, provideModuleMap } = require('./dist/server/main');
 
 // Our Universal express-engine (found @ https://github.com/angular/universal/tree/master/modules/express-engine)
 app.engine('html', ngExpressEngine({
@@ -53,7 +54,7 @@ app.engine('html', ngExpressEngine({
 }));
 
 app.set('view engine', 'html');
-app.set('views', join(DIST_FOLDER,'browser'));
+app.set('views', join(DIST_FOLDER, 'browser'));
 // app.set('views', DIST_FOLDER)
 
 // Example Express Rest API endpoints
