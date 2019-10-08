@@ -11,6 +11,7 @@ module.exports = {
   },
   externals: {
     './dist/server/main': 'require("./dist/server/main")'
+    // './dist/server/main': 'require("./server/main")'
   },
   target: 'node',
   resolve: { extensions: ['.ts', '.js'] },
