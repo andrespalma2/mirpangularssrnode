@@ -31,9 +31,13 @@ app.use(helmet.contentSecurityPolicy({
   }
 }));
 app.use(helmet.referrerPolicy({ policy: 'same-origin' }))
-// app.use(helmet.referrerPolicy({
-//   policy: 'same-origin'
-// }))
+app.use(helmet.featurePolicy({
+  features: {
+    fullscreen: ["'self'"],
+    vibrate: ["'none'"],
+    syncXhr: ["'none'"]
+  }
+}))
 
 app.use(express.json())
 
