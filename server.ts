@@ -40,6 +40,8 @@ app.use(helmet.featurePolicy({
 }))
 
 app.use(express.json())
+const apiURL = process.env.WEBAPI_URL || 'localhost:3200://webapi.miredpagos.com.uy'
+console.log('ApiURL', apiURL)
 
 const PORT = process.env.PORT || 80;
 
