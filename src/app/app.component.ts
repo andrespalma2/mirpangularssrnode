@@ -6,14 +6,18 @@ import { Component, OnInit, Inject } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit{
-  ngOnInit(): void {
-    throw new Error("Method not implemented.");
-  }
   title = 'RedPagosApp'
+  rest_url = undefined;
   constructor(
     @Inject("restUrl") restUrl:string,
     
   ){
     console.log('appcomponent', restUrl)
+    this.rest_url = restUrl
+  }
+
+  ngOnInit(){
+    console.log('OnInit')
+    console.log('resturl', this.rest_url)
   }
 }
