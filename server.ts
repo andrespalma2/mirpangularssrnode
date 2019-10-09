@@ -55,7 +55,9 @@ const { AppServerModuleNgFactory, LAZY_MODULE_MAP, ngExpressEngine, provideModul
 app.engine('html', ngExpressEngine({
   bootstrap: AppServerModuleNgFactory,
   providers: [
-    provideModuleMap(LAZY_MODULE_MAP)
+    provideModuleMap(LAZY_MODULE_MAP),
+    {provide: 'restUrl', useValue: apiURL},
+    
   ]
 }));
 
